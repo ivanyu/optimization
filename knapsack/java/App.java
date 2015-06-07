@@ -34,14 +34,22 @@ public class App {
     }
 
     final long start = System.currentTimeMillis();
-    final int[] result = DynamicProgramming.optimize(n, K, values, weights);
+//    final int[] result = DynamicProgramming.optimize(n, K, values, weights);
+    final int[] result = BranchAndBound.optimize(n, K, values, weights);
     final long end = System.currentTimeMillis();
 
     System.out.printf("Total items to take: %d\nItems:\n", result.length);
 
+    int solutionValue = 0;
+    int solutionWeight = 0;
     for (int x : result) {
       System.out.println(x);
+      solutionValue += values[x];
+      solutionWeight += weights[x];
     }
+
+    System.out.printf("Capacity: %d, weight of the solution: %d\nSolution value: %d\n",
+        K, solutionWeight, solutionValue);
 
     System.out.printf("Completed in %f seconds.", (end - start) / 1000.0);
   }
