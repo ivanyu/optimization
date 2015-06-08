@@ -1,5 +1,4 @@
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -19,7 +18,8 @@ public class App {
     final String filename = args[0];
     try (final FileReader fileReader = new FileReader(filename);
          final BufferedReader reader = new BufferedReader(fileReader)) {
-      String[] splited = reader.readLine().split("\\s");
+      String line = reader.readLine().replaceAll("\\s+", " ");
+      String[] splited = line.split("\\s");
       n = Integer.parseInt(splited[0]);
       K = Integer.parseInt(splited[1]);
 
@@ -27,7 +27,8 @@ public class App {
       weights = new int[n];
 
       for (int i = 0; i < n; i++) {
-        splited = reader.readLine().split("\\s");
+        line = reader.readLine().replaceAll("\\s+", " ");
+        splited = line.split("\\s");
         values[i] = Integer.parseInt(splited[0]);
         weights[i] = Integer.parseInt(splited[1]);
       }
