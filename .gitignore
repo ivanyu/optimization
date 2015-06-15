@@ -30,3 +30,9 @@
 
 # Debug files
 *.dSYM/
+/knapsack/python/.idea
+/knapsack/python/__pycache__
+/knapsack/java/.idea
+/knapsack/java/optimization-knapsack-1.0-SNAPSHOT.jar
+/knapsack/java/*.iml
+/knapsack/java/target
